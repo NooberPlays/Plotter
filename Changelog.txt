@@ -3,3 +3,4 @@ The most recent code is graph3.py and is actually functioning but there are some
 1.- The "include_touching=True" does not seem to work correctly and counts the same figures.
 2.- Figures need to be placed in such a way so that each figure is touching at least 2 vertices from another figure.
 3.- Find a way to start the patch placement where I decide to
+4.- Change the color of the figures touching and outside the function to red
