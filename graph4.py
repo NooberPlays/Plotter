@@ -48,8 +48,10 @@ def plot_function_with_pattern(func, x_range, y_range, base_size, shape="rectang
     # Subtract the amount of figures touching the function if include_touching is False
     if not include_touching:
         num_figures -= int(integral / base_size**2)
-
-    print(f"{num_figures} {shape}(s) fit inside the function. The base size was {base_size} unit(s) with x range of: {x_range} and y range of: {y_range}. The area of the function is {integral:.4f}.")
+        total = num_figures*-1
+        print(f"{total} {shape}(s) are inside the function and NOT TOUCHING the function. The base size was {base_size} unit(s) with x range of: {x_range} and y range of: {y_range}. The area of the function is {integral:.4f}.")
+    elif include_touching:
+        print(f"{num_figures} {shape}(s) are inside the function and TOUCHING the function. The base size was {base_size} unit(s) with x range of: {x_range} and y range of: {y_range}. The area of the function is {integral:.4f}.")
 
 # Example usage
 def func(x):
