@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib.patches import Rectangle, RegularPolygon
 from scipy.integrate import quad
 
-def plot_function_with_pattern(func, x_range, y_range, base_size=1,  num_vertices=4, face_col='green', edge_col='black'):
+def plot_function_with_pattern(func, x_range, y_range, base_size=1,  num_vertices=4, include_touching=True, face_col='green', edge_col='grey'):
     shape_dict = {
         3: {    # triangle
             'radius': base_size/np.sqrt(3),
@@ -51,8 +51,9 @@ def plot_function_with_pattern(func, x_range, y_range, base_size=1,  num_vertice
         for y_i in np.arange(y_range[0] + y_offset, y_range[1] + y_offset, base_step_y):
             patch = RegularPolygon((x_i, y_i), num_vertices, radius=radius, orientation=orient, fc=face_col, ec=edge_col)
             if patch.contains_point((x_i, func(x_i)), radius=1e-9):  # omitting radius triggers a mpl bug
-                ax.add_patch(patch)
-                num_figures += 1
+                if include_touching:
+                    ax.add_patch(patch)
+                    num_figures += 1
                 break  
             else:
                 ax.add_patch(patch)
@@ -70,4 +71,4 @@ def plot_function_with_pattern(func, x_range, y_range, base_size=1,  num_vertice
 def func(x):
     return -0.00002*x**6 + 0.0011*x**5 -0.024 *x**4 + 0.24*x**3 -0.8*x**2 -x + 10
 
-plot_function_with_pattern(func, x_range=(0, 19.308), y_range=(0, 17.55), base_size=.5, num_vertices=6)
+plot_function_with_pattern(func, x_range=(0, 19.308), y_range=(0, 17.55), base_size=0.8, include_touching=True, num_vertices=6)

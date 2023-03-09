@@ -57,4 +57,4 @@ def plot_function_with_pattern(func, x_range, y_range, base_size, shape="rectang
 def func(x):
     return -0.00002*x**6 + 0.0011*x**5 -0.024 *x**4 + 0.24*x**3 -0.8*x**2 -x + 10
 
-plot_function_with_pattern(func, x_range=(0, 19.308), y_range=(0, 17.55), base_size=1, shape="hexagon", include_touching=True)
+plot_function_with_pattern(func, x_range=(0, 19.308), y_range=(0, 17.55), base_size=1, shape="square", include_touching=True)
